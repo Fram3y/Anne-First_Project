@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +18,16 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Route::get('/home', function () {
-//     return view('home', ['name' => "Sam"]);
-// });
+Route::get('/home', function () {
+    return view('home', ['name' => "Sam"]);
+});
 
-// Route::get('/about', function () {
-//     return view('about', ['name' => "Aaron"]);
-// });
+Route::get('/about', function () {
+    return view('about', ['name' => "Aaron"]);
+});
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/contactus', function () {
+    return view('contactus', ['name' => "Ben"]);
+});
+
+// Route::get('/home', [PageController::class, 'home']);

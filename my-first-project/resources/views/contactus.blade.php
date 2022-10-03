@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Home</h1>
+<h1>Contact us</h1>
 
 @if ($name == "Sam")
 <h1>Welcome Mogar</h1>

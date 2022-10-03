@@ -1,0 +1,8 @@
+body{
+    background-color: aqua;
+}
+
+.list {
+    list-style: none;
+    padding-left: 0;
+}

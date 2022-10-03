@@ -8,12 +8,12 @@
     {{-- Meow fucker. cry --}}
     <title>Document</title>
 </head>
-<body style="background-color: aqua">
+<body>
     @yield('content')
 </body>
 
 <div>
-    <ul style="list-style: none">
+    <ul class="list">
         <li><a href="http://localhost:8000/home">Home</a></li>
         <li><a href="http://localhost:8000/about">About</a></li>
         <li><a href="https://media.tenor.com/CH9a7exGiFIAAAAM/cat-mute.gif">Contact Us</a></li>

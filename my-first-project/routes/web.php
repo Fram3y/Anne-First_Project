@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/create', function () {
-    return view('create');
-});
+Route::resource('/notes', NoteController::class)->middleware(['auth']);
 
-Route::get('create/user/{id}', [UserController::class, 'show']);
 
 require __DIR__.'/auth.php';

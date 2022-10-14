@@ -1,8 +1,12 @@
-body{
-    background-color: aqua;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .list {
     list-style: none;
     padding-left: 0;
+}
+
+.app-title{
+    font-size: 100px;
 }

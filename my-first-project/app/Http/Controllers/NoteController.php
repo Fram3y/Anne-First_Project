@@ -16,8 +16,10 @@ class NoteController extends Controller
 
     public function index()
     {
+
         $notes = Note::where('user_id', Auth::id())->latest('updated_at')->paginate(5);
-        return view('notes.index')->with("notes", $notes);
+        return view('notes.index')->with('notes', $notes);
+
     }
 
     // Show the form for creating a new rescource
@@ -54,9 +56,12 @@ class NoteController extends Controller
     // @param int $id;
     // @return \Illuminate\Http\Response;
 
-    public function show($id)
+    public function show(Note $note)
     {
-
+        if($note->user_id != Auth::id()) {
+            return abort(403);
+        }
+        return view('notes.show')->with('note',$note);
     }
 
     // Show the form for editing the specified resources
@@ -64,9 +69,12 @@ class NoteController extends Controller
     // @param int $id;
     // @return \Illuminate\Http\Response;
 
-    public function edit($id)
+    public function edit(Note $note)
     {
-
+        if($note->user_id != Auth::id()) {
+            return abort(403);
+        }
+        return view('notes.edit')->with('note',$note);
     }
 
     // Update the specified resource in storage.
@@ -75,9 +83,24 @@ class NoteController extends Controller
     // @param int $id
     // @return \Illuminate\Http\Response
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Note $note)
     {
 
+        if($note->user_id != Auth::id()) {
+            return abort(403);
+        }
+
+        $request->validate([
+            'title' => 'required|max:120',
+            'text' => 'required'
+        ]);
+
+        $note->update([
+            'title' => $request->title,
+            'text' => $request->text
+        ]);
+
+        return to_route('notes.show', $note)->with('success','Note Updated Successfully');
     }
 
     // Remove the specified resource from storage
@@ -85,9 +108,15 @@ class NoteController extends Controller
     // @param int $id
     // @return \Illuminate\Http\Response
 
-    public function destroy($id)
+    public function destroy(Note $note)
     {
-        
+        if($note->user_id != Auth::id()) {
+            return abort(403);
+        }
+
+        $note->delete();
+
+        return to_route('notes.index')->with('success', 'Note deleted successfully');
     }
 
     

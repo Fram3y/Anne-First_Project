@@ -25,5 +25,4 @@ Route::get('/dashboard', function () {
 
 Route::resource('/notes', NoteController::class)->middleware(['auth']);
 
-
 require __DIR__.'/auth.php';

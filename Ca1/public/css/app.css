@@ -70,7 +70,7 @@ video {
 }
 
 .flex {
-    display: flex
+    flex-wrap: wrap;
 }
 
 .grid {
@@ -87,6 +87,10 @@ video {
 
 .justify-center {
     justify-content: center
+}
+
+.justify-between {
+    justify-content: space-between
 }
 
 .font-semibold {

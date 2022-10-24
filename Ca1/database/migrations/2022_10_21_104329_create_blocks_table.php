@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('blocks', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->image('filename');
+            $table->string('block_image');
             $table->timestamps();
         });
     }

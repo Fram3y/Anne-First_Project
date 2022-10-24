@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Block_Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('/blocks', Block_Controller::class)->middleware(['auth']);

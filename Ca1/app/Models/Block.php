@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Block extends Model
 {
+    protected $fillable = ['user_id'];
+    protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
+
     use HasFactory;
 }

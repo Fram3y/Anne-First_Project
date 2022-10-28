@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%
@@ -152,6 +152,10 @@ video {
 
 .ml-4 {
     margin-left: 1rem
+}
+
+.ml-8 {
+    margin-left: 2rem;
 }
 
 .mt-8 {

@@ -9,11 +9,13 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
+            {{-- routes edit button to the edit.php page --}}
             <div class="flex">
                 <div>
                     <a href="{{ route('blocks.edit', $block) }}" class="btn-link ml-auto">Edit Block</a>
                 </div>
     
+                {{-- activates the destory function from the block controller to delete the block --}}
                 <div>
                     <form action="{{ route('blocks.destroy', $block) }}" method="POST">
                         @method('delete')
@@ -23,6 +25,7 @@
                 </div>
             </div>
         
+            {{-- pulls info for block by uuid --}}
             <div class="flex justify-between mt-4 bg-white py-4 px-6 mx-auto shadow ml-4">
                 <h2 class="font-bold text-2x1">
                     {{ $block->title }}

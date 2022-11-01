@@ -7,10 +7,12 @@
 
     <div class="py-12">
 
+        {{-- routes to the create.php page --}}
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4">
             <a href="{{ route('blocks.create') }}">+ New Block</a>
         </div>
 
+        {{-- runs loop to pull blocks from database for specific users --}}
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @forelse ($blocks as $block)
             <a href="{{ route('blocks.show', $block) }}">
@@ -22,6 +24,7 @@
                 
                 <img src="{{ asset('storage/images/' . $block->block_image) }}" width="150">
                 
+                {{-- if you have no blocks the @empty tag will show --}}
             </div>
             @empty
                 <p>You have no blocks yet.</p>

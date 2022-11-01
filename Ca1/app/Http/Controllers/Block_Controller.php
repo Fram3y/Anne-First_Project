@@ -9,6 +9,8 @@ use App\Models\Block;
 
 class Block_Controller extends Controller
 {
+
+    //Pulling blocks from database
     public function index()
     {
         // $userId = Auth::id();
@@ -16,11 +18,13 @@ class Block_Controller extends Controller
         return view('blocks.index')->with('blocks', $blocks);
     }
 
+    //function to route to block create page
     public function create()
     {
         return view('blocks.create');
     }
 
+    //pushing new blocks to database
     public function store(Request $request)
     {
         $request->validate([
@@ -49,6 +53,7 @@ class Block_Controller extends Controller
         return to_route('blocks.index');
     }
 
+    //pulling specific blocks by uuid to show page
     public function show(Block $block)
     {
         return view('blocks.show')->with('block', $block);
@@ -58,6 +63,7 @@ class Block_Controller extends Controller
         }
     }
 
+    //pulling specific blocks by uuid to edit page
     public function edit(Block $block)
     {
         
@@ -99,6 +105,7 @@ class Block_Controller extends Controller
         
     }
 
+    //deletes block
     public function destroy(Block $block)
     {
         if($block->user_id != Auth::id()){

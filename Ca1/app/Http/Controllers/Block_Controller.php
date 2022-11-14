@@ -95,7 +95,7 @@ class Block_Controller extends Controller
         $block->block_image = $filename;
         $block->save();
 
-        return to_route('blocks.show', $block);
+        return to_route('blocks.index', $block);
         
     }
 

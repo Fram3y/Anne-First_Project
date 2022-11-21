@@ -8,12 +8,12 @@
     <div class="py-12">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4">
-            <a href="{{ route('blocks.create') }}">+ New Block</a>
+            <a href="{{ route('admin.blocks.create') }}">+ New Block</a>
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @forelse ($blocks as $block)
-            <a href="{{ route('blocks.show', $block) }}">
+            <a href="{{ route('admin.blocks.show', $block) }}">
             <div class="flex justify-between mt-4 bg-white py-4 px-6 mx-auto shadow ml-4">
                 <h2 class="font-bold text-2x1">
                     {{ $block->title }}

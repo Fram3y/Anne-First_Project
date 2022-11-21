@@ -11,7 +11,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ route('blocks.update', $block) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.blocks.update', $block) }}" method="POST" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
 

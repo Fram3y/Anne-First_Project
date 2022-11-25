@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Block;
+use App\Models\User;
 
 class Block_Controller extends Controller
 {
     public function index()
     {
-        $user = Auth::id();
-        $user = authorizeRoles('admin');
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
 
         $blocks = Block::paginate(10);
 
@@ -22,8 +23,8 @@ class Block_Controller extends Controller
 
     public function create()
     {
-        $user = Auth::id();
-        $user = authorizeRoles('admin');
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
 
         return view('admin.blocks.create');
     }
@@ -60,7 +61,7 @@ class Block_Controller extends Controller
     {
         return view('admin.blocks.show')->with('block', $block);
 
-        if($block->user_id != Auth::id()){
+        if($block->user_id != Auth::user()){
             return abort(403);
         }
     }

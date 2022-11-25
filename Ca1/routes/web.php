@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Block_Controller as AdminBlockController;
 use App\Http\Controllers\User\Block_Controller as UserBlockController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,7 @@ Route::get('/dashboard', function () {
 
 // Route::resource('/blocks', Block_Controller::class)->middleware(['auth']);
 
-Route::get('/home', [App\Http\Controllers\Block_Controller::class, 'index'])->name('blocks.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('blocks.index');
 
 //This will create all the routes for Book
 //and the routes will only be available when a user is logged in

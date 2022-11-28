@@ -34,12 +34,24 @@
                 name="block_image" 
                 field="block_image"
                 type="file" 
-                placeholder="Block"
+                placeholder="Block image"
                 >
+
 
                 @error('block_image')
                     <div class="text-red-600 text-sm">{{ $message }}</div>
                 @enderror
+
+                <br>
+
+                <input 
+                class="mt-2"
+                name="texture_pack"
+                field="List"
+                placeholder="Texture Pack List"
+                type="list"
+                
+                >
 
                 <br>
                 

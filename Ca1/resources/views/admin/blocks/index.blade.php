@@ -15,10 +15,18 @@
             @forelse ($blocks as $block)
             <a href="{{ route('admin.blocks.show', $block) }}">
             <div class="flex justify-between mt-4 bg-white py-4 px-6 mx-auto shadow ml-4">
-                <h2 class="font-bold text-2x1">
-                    {{ $block->title }}
-                    <span class="block mt-4 text-sm opacity-70">Last updated {{ $block->updated_at->diffForHumans() }}</span>
-                </h2>
+                <div>
+                  @forelse ($Texturepacks as $pack)
+                      @if ($block->texture_id == $pack->id)
+                        {{ $pack->name }} 
+                    @endif
+                  @empty 
+                  @endforelse
+                    <h2 class="font-bold text-2x1">
+                        {{ $block->title }}
+                        <span class="block mt-4 text-sm opacity-70">Last updated {{ $block->updated_at->diffForHumans() }}</span>
+                    </h2>
+                </div>
                 
                 <img src="{{ asset('storage/images/' . $block->block_image) }}" width="150">
                 

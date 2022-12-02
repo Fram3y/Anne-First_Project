@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('blocks', function (Blueprint $table) {
             $table->unsignedBigInteger('texture_id');
-            $table->foreign('texture_id')->references('id')->on('texture_pack')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('texture_id')->references('id')->on('Texturepacks')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -27,8 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('blocks', function (Blueprint $table) {
-            $table->dropForeign(['publisher_id']);
-            $table->dropColumn('publisher_id');
+            $table->dropForeign(['texture_id']);
+            $table->dropColumn('texture_id');
         });
     }
 };

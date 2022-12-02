@@ -32,9 +32,9 @@
                 <input 
                 class="mt-2" 
                 name="block_image" 
-                field="block_image"
+                {{-- field="block_image" --}}
                 type="file" 
-                placeholder="Block image"
+                {{-- placeholder="Block image" --}}
                 >
 
 
@@ -44,14 +44,16 @@
 
                 <br>
 
-                <input 
-                class="mt-2"
-                name="texture_pack"
-                field="List"
-                placeholder="Texture Pack List"
-                type="list"
-                
-                >
+               <div class="form-group">
+                    <label for="Texturepacks">Texture Packs</label>
+                    <select name="texture_id">
+                        @foreach ($Texturepacks as $texturepack)
+                            <option value="{{ $texturepack->id }}" {{ (old('texture_id') == $texturepack->id) ? "selected" : ""}}>
+                            {{ $texturepack->name }}
+                            </option>
+                        @endforeach
+                    </select>
+               </div>
 
                 <br>
                 

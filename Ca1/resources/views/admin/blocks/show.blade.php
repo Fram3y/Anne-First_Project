@@ -27,6 +27,9 @@
                 <h2 class="font-bold text-2x1">
                     {{ $block->title }}
                 </h2>
+                <h3>
+                    {{ $Texturepack->name }}
+                </h3>
                 
                 <img src="{{ asset('storage/images/' . $block->block_image) }}" width="150">
                 

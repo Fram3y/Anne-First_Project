@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use app\Models\Block;
 
-class TexturePack extends Model
+class Texturepack extends Model
 {
     use HasFactory;
 

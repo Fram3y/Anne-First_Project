@@ -12,7 +12,7 @@ class Block extends Model
     protected $guarded = [];
 
     public function texturePack(){
-        return $this->belongsTo(TexturePack::class);
+        return $this->belongsTo(Texturepack::class);
     }
 
     public function getRouteKeyName()

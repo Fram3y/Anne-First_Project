@@ -6,7 +6,7 @@ use App\Models\TexturePack;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TextureSeeder extends Seeder
+class TexturepackSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,8 @@ class TextureSeeder extends Seeder
      */
     public function run()
     {
-        TexturePack::factory()
-        ->times(3)
-        ->hasBlocks(4)
-        ->create();
+       $texture_pack = new Texturepack();
+       $texture_pack->name = 'Doku';
+        $texture_pack->save();
     }
 }

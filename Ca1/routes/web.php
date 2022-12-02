@@ -38,6 +38,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('blocks.index');
 
+Route::get('/home/texturepacks', [App\Http\Controllers\HomeController::class, 'TexturepackIndex'])->name('admin.texturepacks.index');
+
 //This will create all the routes for Book
 //and the routes will only be available when a user is logged in
 Route::resource('/admin/blocks', AdminBlockController::class)->middleware(['auth'])->names('admin.blocks');

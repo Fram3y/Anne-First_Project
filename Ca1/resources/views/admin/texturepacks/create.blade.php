@@ -1,0 +1,64 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Blocks') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4">
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <form action="{{ route('admin.texturepacks.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <input
+                type="text" 
+                name="title"
+                field="title"
+                placeholder="Title"
+                class="w-full"
+                autocomplete="off"
+                :value="@old('title')">
+
+                @error('title')
+                    <div class="text-red-600 text-sm">{{ $message }}</div>
+                @enderror
+
+                <br>
+
+                <input 
+                class="mt-2" 
+                name="block_image" 
+                {{-- field="block_image" --}}
+                type="file" 
+                {{-- placeholder="Block image" --}}
+                >
+
+
+                @error('block_image')
+                    <div class="text-red-600 text-sm">{{ $message }}</div>
+                @enderror
+
+                <br>
+
+               <div class="form-group">
+                    <label for="Texturepacks">Texture Packs</label>
+                    <select name="texture_id">
+                        @foreach ($Texturepack as $texturepack)
+                            <option value="{{ $texturepack->id }}" {{ (old('texture_id') == $texturepack->id) ? "selected" : ""}}>
+                            {{ $texturepack->name }}
+                            </option>
+                        @endforeach
+                    </select>
+               </div>
+
+                <br>
+                
+                <button class="mt-2">Add Block</button>
+            </form>
+        </div>
+    </div>
+</x-app-layout>

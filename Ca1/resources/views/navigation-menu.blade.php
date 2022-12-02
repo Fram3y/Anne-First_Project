@@ -13,7 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('admin.blocks.index') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Blocks') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.texturepacks.index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Texture Packs') }}
                     </x-jet-nav-link>
                 </div>
             </div>

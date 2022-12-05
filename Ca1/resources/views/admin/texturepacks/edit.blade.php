@@ -11,20 +11,20 @@
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form action="{{ route('admin.texturepack.update', $Texturepack) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.texturepacks.update', $Texturepack) }}" method="POST" enctype="multipart/form-data">
                 @method('patch')
                 @csrf
 
                 <input
                 type="text" 
-                name="title"
-                field="title"
-                placeholder="Title"
+                name="name"
+                field="name"
+                placeholder="name"
                 class="w-full"
                 autocomplete="off"
                 value="{{ $Texturepack->name }}">
 
-                @error('title')
+                @error('name')
                     <div class="text-red-600 text-sm">{{ $message }}</div>
                 @enderror
                 

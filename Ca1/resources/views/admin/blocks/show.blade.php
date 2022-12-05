@@ -28,7 +28,7 @@
                     {{ $block->title }}
                 </h2>
                 <h3>
-                    {{ $Texturepack->name }}
+                    {{ $Texturepacks->name }}
                 </h3>
                 
                 <img src="{{ asset('storage/images/' . $block->block_image) }}" width="150">

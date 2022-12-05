@@ -16,48 +16,18 @@
 
                 <input
                 type="text" 
-                name="title"
-                field="title"
-                placeholder="Title"
+                name="name"
+                field="name"
+                placeholder="Name"
                 class="w-full"
                 autocomplete="off"
-                :value="@old('title')">
+                :value="@old('name')">
 
-                @error('title')
+                @error('name')
                     <div class="text-red-600 text-sm">{{ $message }}</div>
                 @enderror
 
-                <br>
-
-                <input 
-                class="mt-2" 
-                name="block_image" 
-                {{-- field="block_image" --}}
-                type="file" 
-                {{-- placeholder="Block image" --}}
-                >
-
-
-                @error('block_image')
-                    <div class="text-red-600 text-sm">{{ $message }}</div>
-                @enderror
-
-                <br>
-
-               <div class="form-group">
-                    <label for="Texturepacks">Texture Packs</label>
-                    <select name="texture_id">
-                        @foreach ($Texturepack as $texturepack)
-                            <option value="{{ $texturepack->id }}" {{ (old('texture_id') == $texturepack->id) ? "selected" : ""}}>
-                            {{ $texturepack->name }}
-                            </option>
-                        @endforeach
-                    </select>
-               </div>
-
-                <br>
-                
-                <button class="mt-2">Add Block</button>
+                <button class="mt-2">Add Pack</button>
             </form>
         </div>
     </div>

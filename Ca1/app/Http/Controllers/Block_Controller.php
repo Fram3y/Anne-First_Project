@@ -51,11 +51,11 @@ class Block_Controller extends Controller
 
     public function show(Block $block)
     {
-        return view('blocks.show')->with('block', $block);
-
         if($block->user_id != Auth::id()){
             return abort(403);
         }
+
+        return view('blocks.show')->with('block', $block);
     }
 
     public function edit(Block $block)

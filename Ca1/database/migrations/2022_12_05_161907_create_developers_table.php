@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('TexturePacks', function (Blueprint $table) {
+        Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('bio');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TexturePacks');
+        Schema::dropIfExists('developers');
     }
 };

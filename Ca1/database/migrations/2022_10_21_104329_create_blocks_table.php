@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('block_image');
+            // $table->string('developer');
             $table->timestamps();
         });
     }

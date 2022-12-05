@@ -43,6 +43,17 @@
                     <div class="text-red-600 text-sm">{{ $message }}</div>
                 @enderror
 
+                <div class="form-group">
+                    <label for="Texturepacks">Texture Packs</label>
+                    <select name="texture_id">
+                        @foreach ($Texturepacks as $texturepack)
+                            <option value="{{ $texturepack->id }}" {{ (old('texture_id') == $texturepack->id) ? "selected" : ""}}>
+                            {{ $texturepack->name }}
+                            </option>
+                        @endforeach
+                    </select>
+               </div>
+
                 <br>
                 
                 <button class="mt-2">Update Block</button>

@@ -66,23 +66,27 @@ class Block_Controller extends Controller
 
     public function show(Block $block)
     {
-        $Texturepack = Texturepack::where("id", $block->texture_id)->firstOrFail();
+        $Texturepacks = Texturepack::where("id", $block->texture_id)->firstOrFail();
 
         if($block->user_id != Auth::id()){
             return abort(403);
         }
 
-        return view('admin.blocks.show')->with('block', $block)->with('Texturepack', $Texturepack);
+        return view('admin.blocks.show')->with('block', $block)->with('Texturepacks', $Texturepacks);
     }
 
     public function edit(Block $block)
     {
-        
         if($block->user_id != Auth::id()){
             return abort(403);
         }
 
-        return view('admin.blocks.edit')->with('block', $block);
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        $Texturepacks = Texturepack::all();
+
+        return view('admin.blocks.edit')->with('block', $block)->with('Texturepacks', $Texturepacks);
     }
 
     public function update(Request $request, Block $block)
@@ -90,8 +94,11 @@ class Block_Controller extends Controller
 
         $request->validate([
             'title' => 'required|max:60',
-            'block_image' => 'required'
+            'block_image' => 'required',
+            'texture_id' => 'required'
         ]);
+
+        $Texturepacks = Texturepack::all();
 
         //creating variable for block image and extenstion
         $block_image = $request->file('block_image');
@@ -110,9 +117,10 @@ class Block_Controller extends Controller
         //update block function (weird af)
         $block->title = $request->title;
         $block->block_image = $filename;
+        $block->texture_id = $request->texture_id;
         $block->save();
 
-        return to_route('admin.blocks.index', $block);
+        return to_route('admin.blocks.index', $block)->with('Texturepacks', $Texturepacks);
         
     }
 

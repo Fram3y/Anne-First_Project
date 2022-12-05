@@ -23,7 +23,7 @@
                 </div>
             </div>
         
-            <div class="flex justify-between mt-4 bg-white py-4 px-6 mx-auto shadow ml-4">
+            <div class="mt-4 bg-white py-4 px-6 mx-auto shadow ml-4">
                 <h2 class="font-bold text-2x1">
                     {{ $Texturepack->id }}
                 </h2>
@@ -31,7 +31,7 @@
                     {{ $Texturepack->name }}
                 </h2> 
             </div>
-            <span class="block mt-4 text-sm opacity-70">Last updated {{ $block->updated_at->diffForHumans() }}</span>
+            {{-- <span class="block mt-4 text-sm opacity-70">Last updated {{ $Texturepacks->updated_at->diffForHumans() }}</span> --}}
         </div>
         
     </div>

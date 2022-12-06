@@ -30,6 +30,13 @@
                 <h3>
                     {{ $Texturepacks->name }}
                 </h3>
+                @foreach ($block->developers as $developer)
+                    <h3>
+                        <td class="font-bold">Developer</td>
+                        <td>{{ $developer->name }}</td>
+                    </h3>
+                @endforeach
+                
                 
                 <img src="{{ asset('storage/images/' . $block->block_image) }}" width="150">
                 

@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\BlockSeeder;
+use Database\Seeders\DeveloperSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(TexturepackSeeder::class);
+        $this->call(DeveloperSeeder::class);
     }
 }

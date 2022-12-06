@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Block;
+use App\Models\Developer;
 use App\Models\Texturepack;
 use App\Models\User;
 
@@ -31,15 +32,22 @@ class Block_Controller extends Controller
         $user->authorizeRoles('admin');
 
         $Texturepacks = Texturepack::all();
-        return view('admin.blocks.create')->with('Texturepacks', $Texturepacks);
+        $developers = Developer::all();
+        return view('admin.blocks.create')->with('Texturepacks', $Texturepacks)->with('developers', $developers);
     }
 
     public function store(Request $request)
     {
+        $developers = Developer::pluck('id');
+
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
         $request->validate([
             'title' => 'required|max:60',
             'block_image' => 'required',
-            'texture_id' => 'required'
+            'texture_id' => 'required',
+            'developers' => ['required', 'exists:developers,id']
         ]);
 
         //creating variable for block image and extenstion
@@ -61,18 +69,21 @@ class Block_Controller extends Controller
         $block->texture_id = $request->texture_id;
         $block->save();
 
+        // $developers->block()->attach($request->developers);
+
         return to_route('admin.blocks.index');
     }
 
     public function show(Block $block)
     {
         $Texturepacks = Texturepack::where("id", $block->texture_id)->firstOrFail();
+        $developers = Developer::all();
 
         if($block->user_id != Auth::id()){
             return abort(403);
         }
 
-        return view('admin.blocks.show')->with('block', $block)->with('Texturepacks', $Texturepacks);
+        return view('admin.blocks.show')->with('block', $block)->with('Texturepacks', $Texturepacks)->with('developers', $developers);
     }
 
     public function edit(Block $block)
@@ -85,8 +96,9 @@ class Block_Controller extends Controller
         $user->authorizeRoles('admin');
 
         $Texturepacks = Texturepack::all();
+        $developers = Developer::all();
 
-        return view('admin.blocks.edit')->with('block', $block)->with('Texturepacks', $Texturepacks);
+        return view('admin.blocks.edit')->with('block', $block)->with('Texturepacks', $Texturepacks)->with('developers', $developers);
     }
 
     public function update(Request $request, Block $block)

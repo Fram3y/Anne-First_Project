@@ -24,7 +24,7 @@
                 
             </div>
             @empty
-                <p>You have no blocks yet.</p>
+                <p>You have no texture packs yet.</p>
             @endforelse
 
         </div>

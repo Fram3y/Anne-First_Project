@@ -54,6 +54,14 @@
                     </select>
                </div>
 
+               <div class="form-group">
+                    <label for="developers"><strong>Developers</strong> <br> </label>
+                    @foreach ($developers as $developer)
+                        <input type="checkbox", value="{{ $developer->id }}" name="developers[]">
+                        {{ $developer->name }}
+                    @endforeach
+                </div>
+
                 <br>
                 
                 <button class="mt-2">Update Block</button>

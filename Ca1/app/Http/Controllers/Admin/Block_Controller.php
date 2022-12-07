@@ -69,7 +69,7 @@ class Block_Controller extends Controller
         $block->texture_id = $request->texture_id;
         $block->save();
 
-        // $developers->block()->attach($request->developers);
+        $block->developers()->attach($request->block);
 
         return to_route('admin.blocks.index');
     }
@@ -77,8 +77,8 @@ class Block_Controller extends Controller
     public function show(Block $block)
     {
         $Texturepacks = Texturepack::where("id", $block->texture_id)->firstOrFail();
-        $developers = Developer::all();
-
+        $developers = Developer::pluck('id');
+        
         if($block->user_id != Auth::id()){
             return abort(403);
         }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('developer_id');
             $table->unsignedBigInteger('block_id');
 
-            $table->foreign('developer_id')->references('id')->on('developers')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('block_id')->references('id')->on('blocks')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('developer_id')->references('id')->on('developers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('block_id')->references('id')->on('blocks')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -33,6 +33,12 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('block_developer', function (Blueprint $table) {
+            $table->dropForeign(['developer_id']);
+            $table->dropForeign(['block_id']);
+        });
+
         Schema::dropIfExists('block_developer');
     }
+
 };

@@ -13,20 +13,21 @@ class TexturepackController extends Controller
     // displays all texture packs onto index page
     public function index()
     {
-        $user = Auth::user();
-        $user->authorizeRoles('admin');
-
+        // texturepacks definition
         $Texturepack = Texturepack::all();
 
+        //route to homepage
         return view('admin.texturepacks.index')->with('Texturepack', $Texturepack);
     }
 
     // adds action to the create button that links to the create form
     public function create()
     {
+        // user role authentication
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
+        // Texture pack definition
         $Texturepack = Texturepack::all();
         return view('admin.texturepacks.create')->with('Texturepack', $Texturepack);
     }
@@ -34,6 +35,7 @@ class TexturepackController extends Controller
     // pushes new texture pack to the database
     public function store(Request $request)
     {
+        //  Texturepack validation
         $request->validate([
             'name' => 'required|max:60'
         ]);
@@ -43,28 +45,32 @@ class TexturepackController extends Controller
         $Texturepack->name = $request->name;
         $Texturepack->save();
 
+        // route to the home page
         return to_route('admin.texturepacks.index');
     }
 
     // adds a redirect to get to the more information page of the texture pack
     public function show(Texturepack $Texturepack)
     {
+        // route to the show page
         return view('admin.texturepacks.show')->with('Texturepack', $Texturepack);
     }
 
     // adds a redirect to get to the edit form to update the info of the texture pack
     public function edit(Texturepack $Texturepack)
     {
+        // user role authenticaton
         $user = Auth::user();
         $user->authorizeRoles('admin');
 
+        // route to the edit form
         return view('admin.texturepacks.edit')->with('Texturepack', $Texturepack);
     }
 
     // this re-writes the data of the texture pack and pushes
     public function update(Request $request, Texturepack $Texturepack)
     {
-
+        // Texture Update Validation
         $request->validate([
             'name' => 'required|max:60'
         ]);
@@ -73,14 +79,21 @@ class TexturepackController extends Controller
         $Texturepack->name = $request->name;
         $Texturepack->save();
 
+        // re-route back to homepage
         return to_route('admin.texturepacks.index', $Texturepack);
     }
 
     // button that deletes a texture pack from the database
     public function destroy(Texturepack $Texturepack)
     {
+        // User Authentication
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        // deletes texture pack
         $Texturepack->delete();
 
+        // re-route back to home page
         return to_route('admin.texturepacks.index');
     }
 

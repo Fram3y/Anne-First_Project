@@ -59,6 +59,7 @@
                     @foreach ($developers as $developer)
                         <input type="checkbox", value="{{ $developer->id }}" name="developers[]">
                         {{ $developer->name }}
+
                     @endforeach
                 </div>
 

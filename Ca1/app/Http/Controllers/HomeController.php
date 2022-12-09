@@ -41,6 +41,6 @@ class HomeController extends Controller
         else if ($user->hasRole('user')){
             $home = 'user.texturepacks.index';
         }
-        return view('admin.texturepacks.index')->with('Texturepacks', $Texturepacks);
+        return redirect()->route($home);
     }
 }

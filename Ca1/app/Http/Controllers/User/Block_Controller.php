@@ -12,18 +12,14 @@ class Block_Controller extends Controller
 {
     public function index()
     {
-        // $userId = Auth::id();
-        $blocks = Block::where('user_id', Auth::id())->latest('updated_at')->paginate(5);
-        return view('user.blocks.index')->with('blocks', $blocks);
+        $blocks = Block::paginate(10);
+
+        return view('user.blocks.index')->with('blocks', $blocks)->with('Texturepack', $Texturepack);
     }
 
     public function show(Block $block)
     {
-        if($block->user_id != Auth::id()){
-            return abort(403);
-        }
-
-        return view('user.blocks.show')->with('block', $block);
+        return view('user.blocks.show')->with('block', $block)->with('developers', $developers)->with('Texturepack', $Texturepack);
     }
 
 }

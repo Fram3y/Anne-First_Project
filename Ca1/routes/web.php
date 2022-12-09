@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\Block_Controller as AdminBlockController;
 use App\Http\Controllers\User\Block_Controller as UserBlockController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\TexturepackController as AdminTexturePackController;
-// use App\Http\Controllers\User\TexturepackController as UserTexturePackController;
+use App\Http\Controllers\User\TexturepackController as UserTexturePackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +36,9 @@ Route::get('/dashboard', function () {
     return view('blocks');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('blocks.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.blocks.index');
 
-Route::get('/home/texturepacks', [App\Http\Controllers\HomeController::class, 'TexturepackIndex'])->name('admin.texturepacks.index');
+Route::get('/home/texturepacks', [App\Http\Controllers\HomeController::class, 'TexturepackIndex'])->name('home.texturepacks.index');
 
 //This will create all the routes for Book
 //and the routes will only be available when a user is logged in
@@ -47,3 +47,5 @@ Route::resource('/admin/blocks', AdminBlockController::class)->middleware(['auth
 Route::resource('/user/blocks', UserBlockController::class)->middleware(['auth'])->names('user.blocks')->only(['index', 'show']);
 
 Route::resource('/admin/texturepacks', AdminTexturePackController::class)->middleware(['auth'])->names('admin.texturepacks');
+
+Route::resource('/user/texturepacks', UserTexturePackController::class)->middleware(['auth'])->names('user.texturepacks');

@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Block;
+use app\Models\Texturepack;
 
 class Block_Controller extends Controller
 {
@@ -13,7 +14,11 @@ class Block_Controller extends Controller
     {
         // $userId = Auth::id();
         $blocks = Block::where('user_id', Auth::id())->latest('updated_at')->paginate(5);
-        return view('blocks.index')->with('blocks', $blocks);
+
+        // defintion of texture packs
+        $Texturepacks = Texturepack::all();
+
+        return view('blocks.index')->with('blocks', $blocks)->with('Texturepacks', $Texturepacks);
     }
 
     public function create()
